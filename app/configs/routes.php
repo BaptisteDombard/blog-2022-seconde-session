@@ -56,4 +56,11 @@ return [
         'controller' => 'RssController',
         'callback' => 'index',
     ],
+    [
+        'method' => 'GET',
+        'action' => 'edit',
+        'resource' => 'profile',
+        'controller' => 'ProfileController',
+        'callback' => 'index',
+    ],
 ];

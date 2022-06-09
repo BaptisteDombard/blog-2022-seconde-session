@@ -1,3 +1,4 @@
+<?php use Carbon\Carbon;?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -34,22 +35,24 @@
           rel="stylesheet">
 </head>
 <body class="bg-gray-200">
-<?xml version="1.0"?>
-<rss version="2.0">
-    <channel>
-        <title>My awesome blog</title>
-        <link>index.php</link>
-        <description>The Awesome blog of Dominique Vilain</description>
-        <language>fr-be</language>
-        <?php foreach ($data['posts'] as $post): ?>
-        <item>
-            <title><?= $post->post_title ?></title>
-            <link>http://blog.test/?action=show&amp;resource=post&amp;slug=<?= $post->post_slug ?> </link>
-            <description><?= $post->post_excerpt ?></description>
-            <pubDate>Thu, 12 May 22 13:03:40 +0000</pubDate>
-        </item>
-        <?php endforeach;?>
-    </channel>
-</rss>
+    <pre>
+        <? xml version="1.0"?>
+        <rss version="2.0">
+            <channel>
+                <title>My awesome blog</title>
+                <link>http://blog.test/</link>
+                <description>The Awesome blog of Dominique Vilain</description>
+                <language>fr-be</language>
+                <?php foreach ($data['posts'] as $post): ?>
+                    <item>
+                    <title><?= $post->post_title ?></title>
+                    <link>http://blog.test/?action=show&amp;resource=post&amp;slug=<?= $post->post_slug ?></link>
+                    <description><?= $post->post_excerpt ?></description>
+                    <pubDate><?= carbon::create($post->post_published_at)->toRfc822String()?></pubDate>
+                </item>
+                <?php endforeach;?>
+            </channel>
+        </rss>
+    </pre>
 </body>
 </html>
