@@ -13,6 +13,7 @@ class Author extends Model
                        a.name, 
                        a.avatar, 
                        a.slug, 
+                       a.email,
                        count(posts.id) as posts_count
                 FROM posts
                 JOIN authors a on posts.author_id = a.id

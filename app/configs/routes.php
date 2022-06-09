@@ -57,10 +57,10 @@ return [
         'callback' => 'index',
     ],
     [
-        'method' => 'POST',
+        'method' => 'GET',
         'action' => 'edit',
         'resource' => 'profile',
         'controller' => 'ProfileController',
-        'callback' => 'index',
+        'callback' => 'edit',
     ],
 ];
