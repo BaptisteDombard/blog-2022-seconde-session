@@ -49,4 +49,11 @@ return [
         'controller' => 'SessionController',
         'callback' => 'destroy',
     ],
+    [
+        'method' => 'GET',
+        'action' => 'index',
+        'resource' => 'rss',
+        'controller' => 'RssController',
+        'callback' => 'index',
+    ],
 ];
