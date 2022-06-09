@@ -25,6 +25,7 @@ class ProfileController
         }else{
             $view_data['view'] = 'posts/index.php';
         }
+
         $view_data['data'] = $this->fetch_aside_data();
         return $view_data;
     }
