@@ -15,6 +15,9 @@ class ProfileController
     }
 
     public function index(): array{
+        $view_data = [];
+        $view_data['view'] = 'profile/edit-profile.php';
 
+        return $view_data;
     }
 }

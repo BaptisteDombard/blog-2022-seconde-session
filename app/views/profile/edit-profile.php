@@ -40,13 +40,21 @@
         <div class="container flex justify-between mx-auto">
             <div class="w-full lg:w-8/12">
                 <div class="flex items-center justify-between">
-                    <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Create Post</h1>
+                    <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Profile</h1>
                 </div>
                 <div class="mt-6">
                     <form action="/"
                           method="post">
-                        <label for="email" class="mb-2">Email </label>
-                        <input type="email" value="<?= ?>">
+                        <label for="email" class="block mb-2">Email</label>
+                        <input type="email" value="" name="email" id="email" class="w-full rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        <label for="old-pass" class="block mb-2">Old Password - Leave blank if you don't want to change it</label>
+                        <input type="password" name="old-pass" id="old-pass" class="w-full rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        <label for="new-pass" class="block mb-2">New Password - At least 8 characters and maximum 64 characters, 1 uppercase and 1 digit</label>
+                        <input type="password" name="new-pass" id="new-pass" class="w-full rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        <label for="reapeat-pass" class="block mb-2">Reapeat New Password</label>
+                        <input type="password" name="reapeat-pass" id="reapeat-pass" class="w-full rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        <label for="avatar" class="block mb-2">Avatar (jpeg ou png)</label>
+                        <input type="file" name="avatar" id="avatar">
                         <button type="submit"
                                 class="float-right mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">
                             Update profile

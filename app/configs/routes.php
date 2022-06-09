@@ -57,7 +57,7 @@ return [
         'callback' => 'index',
     ],
     [
-        'method' => 'GET',
+        'method' => 'POST',
         'action' => 'edit',
         'resource' => 'profile',
         'controller' => 'ProfileController',
