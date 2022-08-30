@@ -30,20 +30,8 @@ class APIController
         // Order setting from request
         $sort_order = isset($_GET['order-by']) && $_GET['order-by'] === 'oldest' ? 'ASC' : DEFAULT_SORT_ORDER;
 
-        // Filter setting from request
-        $filter = [];
-        if (isset($_GET['category'])) {
-            $filter['type'] = 'category';
-            $filter['value'] = $_GET['category'];
-            define('POSTS_COUNT', $this->post_model->count_by_category($_GET['category']));
-        } elseif (isset($_GET['author'])) {
-            $filter['type'] = 'author';
-            $filter['value'] = $_GET['author'];
-            define('POSTS_COUNT', $this->post_model->count_by_author($_GET['author']));
-        }
-
         // Main data for request
-        $posts = $this->post_model->get($filter, $sort_order);
+        $posts = $this->post_model->get_unfiltered($sort_order, 0, 35);
 
         // Rendering
         $view_data = [];
