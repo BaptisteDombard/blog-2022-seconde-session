@@ -20,6 +20,7 @@ $pdo->exec(<<< SQL
         slug       varchar(255) null unique,
         avatar     tinytext null,
         email      varchar(255) not null unique,
+        api_token  varchar(255) not null,
         password   varchar(255) not null,
         created_at timestamp    default CURRENT_TIMESTAMP,
         deleted_at timestamp    null,
