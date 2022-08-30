@@ -63,4 +63,11 @@ return [
         'controller' => 'ProfileController',
         'callback' => 'edit',
     ],
+    [
+      'method' => 'GET',
+      'action' => 'index',
+      'resource' => 'api_post',
+      'controller' => 'APIController',
+      'callback' => 'index',
+    ],
 ];

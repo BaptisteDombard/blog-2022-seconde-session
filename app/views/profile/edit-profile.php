@@ -60,6 +60,13 @@
                             Update profile
                         </button>
                     </form>
+                    <h2>Your API Token</h2>
+                    <p><?=$_SESSION['connected_author']->api_token?></p>
+                    <form action="/"
+                          method="post"
+                          id="api_token">
+                        <button type="submit">(re)generate your API Token</button>
+                    </form>
                 </div>
             </div>
             <?php include PARTIALS_PATH.'_aside.php' ?>

@@ -14,6 +14,7 @@ class Author extends Model
                        a.avatar, 
                        a.slug, 
                        a.email,
+                       a.api_token,
                        count(posts.id) as posts_count
                 FROM posts
                 JOIN authors a on posts.author_id = a.id
@@ -43,5 +44,12 @@ class Author extends Model
         $statement->execute([':email' => $email]);
 
         return $statement->fetch();
+    }
+
+    public function find_token_by_author(){
+        $sql = <<<SQL
+            SELECT api_token FROM authors WHERE 
+SQL;
+
     }
 }
