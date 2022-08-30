@@ -14,4 +14,11 @@ class TokenController
     ){
     }
 
+    public function update(){
+        $this->author_model->regenerate_token();
+
+        $view_data = [];
+        $view_data['view'] = 'profile/edit-profile.php#api_token';
+    }
+
 }

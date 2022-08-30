@@ -60,11 +60,12 @@
                             Update profile
                         </button>
                     </form>
-                    <h2>Your API Token</h2>
+                    <h2 id="api_token">Your API Token</h2>
                     <p><?=$_SESSION['connected_author']->api_token?></p>
                     <form action="/"
-                          method="post"
-                          id="api_token">
+                          method="GET">
+                        <input type="hidden" name="action" value="update">
+                        <input type="hidden" name="resource" value="token">
                         <button type="submit">(re)generate your API Token</button>
                     </form>
                 </div>

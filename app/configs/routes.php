@@ -64,6 +64,13 @@ return [
         'callback' => 'edit',
     ],
     [
+        'method' => 'GET',
+        'action' => 'update',
+        'resource' => 'token',
+        'controller' => 'TokenController',
+        'callback' => 'update',
+    ],
+    [
       'method' => 'GET',
       'action' => 'index',
       'resource' => 'api_post',

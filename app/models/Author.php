@@ -46,10 +46,19 @@ class Author extends Model
         return $statement->fetch();
     }
 
-    public function find_token_by_author(){
-        $sql = <<<SQL
-            SELECT api_token FROM authors WHERE 
-SQL;
+    public function regenerate_token(){
+        $connected_author_name = $_SESSION['connected_author']->name;
+        function str_rand ( int $length = 32)
+        {
+            $length = ($length < 4) ? 4 : $length;
+            return bin2hex(random_bytes(($length - ($length % 2)) /2));
+        }
+        $new_token = str_rand();
 
+        $sql = <<<SQL
+            UPDATE authors SET api_token = $new_token WHERE name = $connected_author_name
+        SQL;
+
+        $this->pdo_connection->query($sql)->fetch();
     }
 }
