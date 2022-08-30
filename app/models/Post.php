@@ -238,4 +238,71 @@ class Post extends Model
 
         return $statement->fetch();
     }
+
+    public function getAll($order){
+        $sql = <<<SQL
+            SELECT p.id as post_id, 
+                   p.slug as post_slug, 
+                   p.title as post_title, 
+                   p.excerpt as post_excerpt,
+                   p.published_at as post_published_at
+            FROM posts p 
+            JOIN authors a on p.author_id = a.id
+            ORDER BY published_at $order
+        SQL;
+
+        return $this->pdo_connection->query($sql)->fetchAll();
+    }
+
+    public function get_with_author($order){
+        $sql = <<<SQL
+            SELECT p.id as post_id, 
+                   p.slug as post_slug, 
+                   p.title as post_title, 
+                   p.excerpt as post_excerpt,
+                   p.published_at as post_published_at,
+                   a.avatar as author_avatar,
+                   a.name as author_name,
+                   a.slug as author_slug
+            FROM posts p 
+            JOIN authors a on p.author_id = a.id
+            ORDER BY published_at $order
+        SQL;
+
+        return $this->pdo_connection->query($sql)->fetchAll();
+    }
+    public function get_with_comment($order){
+        $sql = <<<SQL
+            SELECT p.id as post_id, 
+                   p.slug as post_slug, 
+                   p.title as post_title, 
+                   p.excerpt as post_excerpt,
+                   p.published_at as post_published_at,
+                   c.body as comment_body
+            FROM posts p 
+            JOIN comments c on p.id = c.post_id
+            ORDER BY published_at $order
+        SQL;
+
+        return $this->pdo_connection->query($sql)->fetchAll();
+    }
+    public function get_with_author_and_comment($order){
+        $sql = <<<SQL
+            SELECT p.id as post_id, 
+                   p.slug as post_slug, 
+                   p.title as post_title, 
+                   p.excerpt as post_excerpt,
+                   p.published_at as post_published_at,
+                   a.avatar as author_avatar,
+                   a.name as author_name,
+                   a.slug as author_slug,
+                   c.body as comment_body
+            FROM posts p 
+            JOIN authors a on p.author_id = a.id
+            JOIN comments c on p.id = c.post_id
+            ORDER BY published_at $order
+        SQL;
+
+        return $this->pdo_connection->query($sql)->fetchAll();
+    }
 }

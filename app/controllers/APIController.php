@@ -31,7 +31,21 @@ class APIController
         $sort_order = isset($_GET['order-by']) && $_GET['order-by'] === 'oldest' ? 'ASC' : DEFAULT_SORT_ORDER;
 
         // Main data for request
-        $posts = $this->post_model->get_unfiltered($sort_order, 0, 35);
+        if (isset($_GET['with'])){
+            if ($_GET['with'] === 'author'){
+                $posts = $this->post_model->get_with_author($sort_order);
+            } elseif ($_GET['with'] === 'comment'){
+                $posts = $this->post_model->get_with_comment($sort_order);
+            } elseif ($_GET['with'] == 'author,comment'){
+                $posts = $this->post_model->get_with_author_and_comment($sort_order);
+            }
+            else{
+                $posts = $this->post_model->getAll($sort_order);
+            }
+        } else{
+            $posts = $this->post_model->getAll($sort_order);
+        }
+
 
         // Rendering
         $view_data = [];
